@@ -1,0 +1,15 @@
+.PHONY: docker
+DOCKER_REPO := nontster
+TAG    := 73-fpm
+NAME   := ${DOCKER_REPO}/php
+IMG    := ${NAME}:${TAG}
+LATEST := ${NAME}:latest
+PROD   := ${NAME}:production
+BUILD  := ${NAME}:build
+
+docker:
+	docker build -t ${TAG} .
+	docker tag ${TAG}:latest ${IMG}
+
+docker_push:
+	docker push ${IMG}
