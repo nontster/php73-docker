@@ -14,7 +14,7 @@ RUN apk --no-cache update && \
         libzip-dev \
         && docker-php-ext-configure gd --with-freetype-dir --with-jpeg-dir \
         && docker-php-ext-install -j$(nproc) gd \
-        && for module in opcache bz2 exif intl mysqli mcrypt pdo_mysql zip sockets xsl pcntl; \
+        && for module in opcache bz2 exif intl mysqli mcrypt pdo_mysql zip sockets xsl pcntl bcmath; \
         do docker-php-ext-configure $module; \
         docker-php-ext-install -j$(nproc) $module; \
         done \
